@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Users\Dtos\" />
+    <Folder Include="Features\Users\Rules\" />
+    <Folder Include="Features\Users\Profiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BittiBitti.Core\BittiBitti.Core.csproj" />
+    <ProjectReference Include="..\BittiBitti.Domain\BittiBitti.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

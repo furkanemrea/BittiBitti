@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.API", "BittiBitt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Core", "BittiBitti.Core\BittiBitti.Core.csproj", "{FDDC2641-C256-40A1-B751-A822A6AD89DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Domain", "BittiBitti.Domain\BittiBitti.Domain.csproj", "{DB0892F1-5A77-4F5F-A363-F63952EEF1C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Application", "BittiBitti.Application\BittiBitti.Application.csproj", "{54752A78-749E-4BBE-8C55-C84DACA4A03B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Persistence", "BittiBitti.Persistence\BittiBitti.Persistence.csproj", "{6A12CAF2-AE9F-4AB7-BABE-09181615D4CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB0892F1-5A77-4F5F-A363-F63952EEF1C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0892F1-5A77-4F5F-A363-F63952EEF1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0892F1-5A77-4F5F-A363-F63952EEF1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0892F1-5A77-4F5F-A363-F63952EEF1C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54752A78-749E-4BBE-8C55-C84DACA4A03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54752A78-749E-4BBE-8C55-C84DACA4A03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54752A78-749E-4BBE-8C55-C84DACA4A03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54752A78-749E-4BBE-8C55-C84DACA4A03B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A12CAF2-AE9F-4AB7-BABE-09181615D4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A12CAF2-AE9F-4AB7-BABE-09181615D4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A12CAF2-AE9F-4AB7-BABE-09181615D4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A12CAF2-AE9F-4AB7-BABE-09181615D4CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

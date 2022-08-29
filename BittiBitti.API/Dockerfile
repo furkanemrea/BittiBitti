@@ -1,4 +1,4 @@
-
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
@@ -12,7 +12,6 @@ COPY ["BittiBitti.Core/BittiBitti.Core.csproj", "BittiBitti.Core/"]
 COPY ["BittiBitti.Persistence/BittiBitti.Persistence.csproj", "BittiBitti.Persistence/"]
 COPY ["BittiBitti.Domain/BittiBitti.Domain.csproj", "BittiBitti.Domain/"]
 COPY ["BittiBitti.Application/BittiBitti.Application.csproj", "BittiBitti.Application/"]
-
 RUN dotnet restore "BittiBitti.API/BittiBitti.API.csproj"
 COPY . .
 WORKDIR "/src/BittiBitti.API"
@@ -25,6 +24,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BittiBitti.API.dll"]
-
-
-
