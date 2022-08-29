@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BittiBitti.Core.Models.Base;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,19 @@ namespace BittiBitti.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 20).Select(index => new WeatherForecast
+            var responseModel = Enumerable.Range(1, 20).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+            EntityResponse<IEnumerable<WeatherForecast>> response = new();
+            response.Data= responseModel;
+            return Ok(response);
         }
     }
 }

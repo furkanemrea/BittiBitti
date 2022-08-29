@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.API", "BittiBitti.API\BittiBitti.API.csproj", "{5CF7E43D-E01B-4EB2-BFB3-6D60F7BFCD89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Core", "BittiBitti.Core\BittiBitti.Core.csproj", "{FDDC2641-C256-40A1-B751-A822A6AD89DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5CF7E43D-E01B-4EB2-BFB3-6D60F7BFCD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CF7E43D-E01B-4EB2-BFB3-6D60F7BFCD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CF7E43D-E01B-4EB2-BFB3-6D60F7BFCD89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDDC2641-C256-40A1-B751-A822A6AD89DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
