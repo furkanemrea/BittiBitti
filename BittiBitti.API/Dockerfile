@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["BittiBitti.API/BittiBitti.API.csproj", "BittiBitti.API/"]
+COPY ["BittiBitti.API.csproj", "BittiBitti.API/"]
 COPY ["BittiBitti.Core/BittiBitti.Core.csproj", "BittiBitti.Core/"]
 RUN dotnet restore "BittiBitti.API/BittiBitti.API.csproj"
 COPY . .
