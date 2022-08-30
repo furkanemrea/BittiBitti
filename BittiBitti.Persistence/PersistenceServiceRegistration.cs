@@ -18,7 +18,7 @@ namespace BittiBitti.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
                                                                 IConfiguration configuration)
         {
-            services.AddDbContext<PostgreDbContext>(options => options.UseNpgsql("postgres://bittibitti:159357@89.252.184.189:5432/BittiBitti"));
+            services.AddDbContext<PostgreDbContext>(options => options.UseNpgsql("Server=89.252.184.189;Port=5432;Database=BittiBitti;User Id=bittibitti;Password=159357;"));
             services.AddScoped<PostgreDbContext>(provider => provider.GetService<PostgreDbContext>());
             services.AddScoped<IUserRepository, UserRepository>();
             return services;

@@ -16,9 +16,9 @@ using System.Threading.Tasks;
 
 namespace BittiBitti.Persistence.Repositories
 {
-    public class UserRepository : EfRepositoryBase<User, BaseDbContext>, IUserRepository
+    public class UserRepository : EfRepositoryBase<User, PostgreDbContext>, IUserRepository
     {
-        public UserRepository(BaseDbContext context) : base(context)
+        public UserRepository(PostgreDbContext context) : base(context)
         {
         }
 

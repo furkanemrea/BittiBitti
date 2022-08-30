@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace BittiBitti.Domain.Entities
 {
-    public class User : Entity
+
+    public partial class User : Entity
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public DateTime DeletedOn { get; set; }
-        public byte RowStatusId { get; set; }
+        public int? Name { get; set; }
+        public int? Surname { get; set; }
+        public int? Email { get; set; }
+        public int? Password { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? DeletedOn { get; set; }
+        public int? RowStatusId { get; set; }
     }
 }
