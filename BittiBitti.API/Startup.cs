@@ -1,5 +1,6 @@
 using BittiBitti.Application;
 using BittiBitti.Application.Services.Repositories;
+using BittiBitti.Core.CustomHandlers.Exceptions.Middleware;
 using BittiBitti.Persistence;
 using BittiBitti.Persistence.Contexts;
 using BittiBitti.Persistence.Repositories;
@@ -62,9 +63,11 @@ namespace BittiBitti.API
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BittiBitti.API v1"));
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseCors(ApiCorsPolicy);
+
+            app.ConfigureCustomExceptionMiddleware();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

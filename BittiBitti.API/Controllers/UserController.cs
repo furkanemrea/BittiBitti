@@ -1,4 +1,5 @@
 ﻿using BittiBitti.Application.Features.Users.Dtos.Request;
+using BittiBitti.Application.Features.Users.Dtos.Response;
 using BittiBitti.Application.Services.Repositories;
 using BittiBitti.Core.Models.Base;
 using BittiBitti.Core.Persistence.Paging;
@@ -18,24 +19,20 @@ namespace BittiBitti.API.Controllers
 
     public class UserController : BaseController
     {
-        public UserController(IUserRepository userRepository) : base(userRepository)
-        {
 
-        }
-
-        [HttpGet]
-        [Route("get-list")]
-        public async Task<IActionResult> GetList()
-        {
-            EntityResponse<IPaginate<User>> responseModel = await UserRepository.GetList();
-            return Ok(responseModel);
-        }
+        //[HttpGet]
+        //[Route("get-list")]
+        //public async Task<IActionResult> GetList()
+        //{
+        //    EntityResponse<IPaginate<User>> responseModel = await UserRepository.GetList();
+        //    return Ok(responseModel);
+        //}
         [HttpPost]
         [Route("login-check")]
         public async Task<IActionResult> LoginCheck(LoginCheckRequest loginCheckRequest)
         {
-            EntityResponse<User> responseModel = UserRepository.LoginCheck(loginCheckRequest);
-            return Ok(responseModel);
+            EntityResponse<LoginCheckResponse> loginCheckResponse = await base.Mediator.Send(loginCheckRequest);
+            return Ok(loginCheckResponse);
         }
     }
 }

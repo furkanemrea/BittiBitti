@@ -1,4 +1,5 @@
 ﻿using BittiBitti.Application.Services.Repositories;
+using BittiBitti.Core.CustomHandlers.Exceptions;
 using BittiBitti.Core.Persistence.Paging;
 using BittiBitti.Domain.Entities;
 using System;
@@ -19,7 +20,7 @@ namespace BittiBitti.Application.Features.Users.Rules
         public async Task UserEmailCannotBeDuplicatedWhenInserted(string email)
         {
             IPaginate<User> result =  await _userRepository.GetListAsync(x=>x.Email == email);
-            if (result.Items.Any()) throw new Exception("User Email is exist");
+            if (result.Items.Any()) throw new BusinessException("User Email is exist");
         }
     }
 }

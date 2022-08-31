@@ -15,7 +15,7 @@ namespace BittiBitti.Application.Services.Repositories
     {
         Task<EntityResponse<IPaginate<User>>> GetList();
 
-        EntityResponse<User> LoginCheck(LoginCheckRequest loginCheckRequest);
+     
 
 
     }

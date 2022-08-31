@@ -1,5 +1,7 @@
 ﻿using BittiBitti.Application.Services.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BittiBitti.API.Controllers
 {
@@ -7,12 +9,9 @@ namespace BittiBitti.API.Controllers
     [Route("[controller]")]
     public class BaseController : ControllerBase
     {
-        public readonly IUserRepository UserRepository;
-
-        public BaseController(IUserRepository userRepository)
-        {
-            UserRepository=userRepository;
-        }
+        protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        private IMediator? _mediator;
+     
 
 
     }
