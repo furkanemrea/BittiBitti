@@ -15,6 +15,7 @@ namespace BittiBitti.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<UserBusinessRules>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;
         }

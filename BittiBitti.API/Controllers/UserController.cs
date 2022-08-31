@@ -34,5 +34,13 @@ namespace BittiBitti.API.Controllers
             EntityResponse<LoginCheckResponse> loginCheckResponse = await base.Mediator.Send(loginCheckRequest);
             return Ok(loginCheckResponse);
         }
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register(CreateUserRequest createUserRequest)
+        {
+            EntityResponse<CreateUserResponse> createUserResponse = await base.Mediator.Send(createUserRequest);
+            return Ok(createUserResponse);
+        }
+
     }
 }
