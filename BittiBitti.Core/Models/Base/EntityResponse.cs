@@ -12,4 +12,9 @@ namespace BittiBitti.Core.Models.Base
         public string Code { get; set; }
         public string Message { get; set; }
     }
+    public sealed class ResponseCodes
+    {
+        public const string Success = "200";
+        public const string Error = "400";
+    }
 }

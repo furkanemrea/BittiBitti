@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BittiBitti.Persistence.Configuration;
+using BittiBitti.Core.Persistence.Repositories;
 
 namespace BittiBitti.Persistence
 {
@@ -18,9 +19,9 @@ namespace BittiBitti.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
                                                                 IConfiguration configuration)
         {
-            services.AddDbContext<PostgreDbContext>(options => options.UseNpgsql("Server=89.252.184.189;Port=5432;Database=BittiBitti;User Id=bittibitti;Password=159357;"));
-            services.AddScoped<PostgreDbContext>(provider => provider.GetService<PostgreDbContext>());
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddDbContext<PostgreDbContext>(options =>
+                                                      options.UseNpgsql("Server=89.252.184.189;Port=5432;Database=BittiBitti;User Id=bittibitti;Password=159357;"));
+            services.AddTransient<IUserRepository, UserRepository>();
             return services;
         }
     }

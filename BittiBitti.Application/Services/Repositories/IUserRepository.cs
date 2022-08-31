@@ -1,4 +1,6 @@
-﻿using BittiBitti.Core.Models.Base;
+﻿using BittiBitti.Application.Features.Users.Dtos.Request;
+using BittiBitti.Core.Models.Base;
+using BittiBitti.Core.Persistence.Paging;
 using BittiBitti.Core.Persistence.Repositories;
 using BittiBitti.Domain.Entities;
 using System;
@@ -11,6 +13,10 @@ namespace BittiBitti.Application.Services.Repositories
 {
     public interface IUserRepository : IAsyncRepository<User>, IRepository<User>
     {
-        Task<EntityResponse<IList<User>>> GetList();
+        Task<EntityResponse<IPaginate<User>>> GetList();
+
+        EntityResponse<User> LoginCheck(LoginCheckRequest loginCheckRequest);
+
+
     }
 }
