@@ -1,5 +1,6 @@
-﻿using BittiBitti.Application.Features.Users.Dtos.Request;
+﻿using BittiBitti.Application.Features.Users.Commands.RegisterUserCommand;
 using BittiBitti.Application.Features.Users.Dtos.Response;
+using BittiBitti.Application.Features.Users.Queries.LoginCheckQuery;
 using BittiBitti.Application.Services.Repositories;
 using BittiBitti.Core.Models.Base;
 using BittiBitti.Core.Persistence.Paging;
@@ -20,25 +21,23 @@ namespace BittiBitti.API.Controllers
     public class UserController : BaseController
     {
 
-        //[HttpGet]
-        //[Route("get-list")]
-        //public async Task<IActionResult> GetList()
-        //{
-        //    EntityResponse<IPaginate<User>> responseModel = await UserRepository.GetList();
-        //    return Ok(responseModel);
-        //}
-        [HttpPost]
+        [HttpGet]
         [Route("login-check")]
-        public async Task<IActionResult> LoginCheck(LoginCheckRequest loginCheckRequest)
+        public async Task<IActionResult> LoginCheck(string email,string password)
         {
-            EntityResponse<LoginCheckResponse> loginCheckResponse = await base.Mediator.Send(loginCheckRequest);
+            LoginCheckQuery loginCheckQuery = new LoginCheckQuery()
+            {
+                 Email=email,
+                 Password=password
+            };
+            EntityResponse<LoginCheckResponse> loginCheckResponse = await base.Mediator.Send(loginCheckQuery);
             return Ok(loginCheckResponse);
         }
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register(CreateUserRequest createUserRequest)
+        public async Task<IActionResult> Register(RegisterUserCommand registerUserCommand)
         {
-            EntityResponse<CreateUserResponse> createUserResponse = await base.Mediator.Send(createUserRequest);
+            EntityResponse<CreateUserResponse> createUserResponse = await base.Mediator.Send(registerUserCommand);
             return Ok(createUserResponse);
         }
 

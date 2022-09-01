@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.1" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
@@ -14,6 +15,11 @@
   <ItemGroup>
     <ProjectReference Include="..\BittiBitti.Core\BittiBitti.Core.csproj" />
     <ProjectReference Include="..\BittiBitti.Domain\BittiBitti.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Users\Commands\LoginCheckCommand\" />
+    <Folder Include="Features\Users\Dtos\Request\" />
   </ItemGroup>
 
 </Project>

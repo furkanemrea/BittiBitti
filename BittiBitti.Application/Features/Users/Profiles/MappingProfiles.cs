@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BittiBitti.Application.Features.Users.Dtos.Request;
+using BittiBitti.Application.Features.Users.Commands.RegisterUserCommand;
 using BittiBitti.Application.Features.Users.Dtos.Response;
 using BittiBitti.Domain.Entities;
 using System;
@@ -15,7 +15,7 @@ namespace BittiBitti.Application.Features.Users.Profiles
         public MappingProfiles()
         {
             CreateMap<User, CreateUserResponse>().ReverseMap();
-            CreateMap<User, CreateUserRequest>().ReverseMap();
+            CreateMap<User, RegisterUserCommand>().ReverseMap();
         }
     }
 }

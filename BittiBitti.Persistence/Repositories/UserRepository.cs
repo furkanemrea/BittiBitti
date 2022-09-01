@@ -1,5 +1,4 @@
-﻿using BittiBitti.Application.Features.Users.Dtos.Request;
-using BittiBitti.Application.Features.Users.Rules;
+﻿using BittiBitti.Application.Features.Users.Rules;
 using BittiBitti.Application.Services.Repositories;
 using BittiBitti.Core.Models.Base;
 using BittiBitti.Core.Persistence.Dynamic;

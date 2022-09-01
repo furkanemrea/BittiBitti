@@ -30,7 +30,6 @@ namespace Core.CrossCuttingConcerns.Exceptions
                 await HandleExceptionAsync(context, exception);
             }
         }
-
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
@@ -41,7 +40,6 @@ namespace Core.CrossCuttingConcerns.Exceptions
                 return CreateAuthorizationException(context, exception);
             return CreateInternalException(context, exception);
         }
-
         private Task CreateAuthorizationException(HttpContext context, Exception exception)
         {
             context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.Unauthorized);
@@ -55,22 +53,21 @@ namespace Core.CrossCuttingConcerns.Exceptions
                 Instance = ""
             }.ToString());
         }
-
         private Task CreateBusinessException(HttpContext context, Exception exception)
         {
             context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
 
             return context.Response.WriteAsync(new EntityResponse<BusinessProblemDetails>
             {
-               Data = new()
-               {
-                   Status = StatusCodes.Status400BadRequest,
-                   Type = "https://example.com/probs/business",
-                   Title = "Business exception",
-                   Detail = exception.Message,
-                   Instance = ""
-               },
-               Code = StatusCodes.Status400BadRequest.ToString()
+                Data = new()
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Type = "https://example.com/probs/business",
+                    Title = "Business exception",
+                    Detail = exception.Message,
+                    Instance = ""
+                },
+                Code = StatusCodes.Status400BadRequest.ToString()
             }.ToString());
         }
 
@@ -78,15 +75,18 @@ namespace Core.CrossCuttingConcerns.Exceptions
         {
             context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
             object errors = ((ValidationException)exception).Errors;
-
-            return context.Response.WriteAsync(new BittiBitti.Core.CustomHandlers.Exceptions.ValidationProblemDetails
+            return context.Response.WriteAsync(new EntityResponse<BittiBitti.Core.CustomHandlers.Exceptions.ValidationProblemDetails>
             {
-                Status = StatusCodes.Status400BadRequest,
-                Type = "https://example.com/probs/validation",
-                Title = "Validation error(s)",
-                Detail = "",
-                Instance = "",
-                Errors = errors
+                Data = new()
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Type = "https://example.com/probs/validation",
+                    Title = "Validation error(s)",
+                    Detail = "",
+                    Instance = "",
+                    Errors = errors
+                },
+                Code= StatusCodes.Status400BadRequest.ToString(),
             }.ToString());
         }
 
