@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BittiBitti.Core.Models.MessageBrokers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BittiBitti.Publisher.Signatures
 {
     public interface IAbstractPublisher
     {
-        Task BasicPublish<T>(T obj, string routingKey);
+        void BasicPublish<T>(T obj) where T : NotifyModel;
     }
 }

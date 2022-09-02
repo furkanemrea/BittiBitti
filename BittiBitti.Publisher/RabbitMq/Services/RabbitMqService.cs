@@ -1,4 +1,5 @@
-﻿using BittiBitti.Publisher.Signatures;
+﻿using BittiBitti.Core.Models.MessageBrokers;
+using BittiBitti.Publisher.Signatures;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System;
@@ -11,20 +12,21 @@ namespace BittiBitti.Publisher.RabbitMq.Services
 {
     public class RabbitMqService : IAbstractPublisher
     {
-        public async Task BasicPublish<T>(T obj, string routingKey)
+        public void BasicPublish<T>(T obj) where T : NotifyModel
         {
-            
+
             ConnectionFactory factory = new ConnectionFactory();
             factory.UserName = "furkan";
             factory.Password = "furkan123";
             factory.VirtualHost = "/";
-            factory.HostName = "89.252.184.189";    
+            factory.HostName = "89.252.184.189";
             factory.Port = AmqpTcpEndpoint.UseDefaultPort;
+            var notifyModel = obj as NotifyModel;
             using (var connection = factory.CreateConnection())
             using (IModel channel = connection.CreateModel())
             {
                 channel.QueueDeclare(
-                    queue: routingKey,
+                    queue: notifyModel.RoutingKey,
                     durable: false, // data storage type
                     exclusive: false, // are other connections can connect the queue 
                     autoDelete: false,
@@ -35,7 +37,7 @@ namespace BittiBitti.Publisher.RabbitMq.Services
 
                 channel.BasicPublish(
                     exchange: "",
-                                routingKey: routingKey,
+                                routingKey: notifyModel.RoutingKey,
                                 body: body
                             );
             }

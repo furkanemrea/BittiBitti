@@ -26,7 +26,7 @@ namespace BittiBitti.API.Controllers
 
         public UserController(IAbstractPublisher abstractPublisher)
         {
-       
+
 
             _abstractPublisher=abstractPublisher;
         }
@@ -35,21 +35,24 @@ namespace BittiBitti.API.Controllers
         [Route("test")]
         public async Task<IActionResult> Test()
         {
-            LoginCheckQuery loginCheckQuery = new LoginCheckQuery();
-            loginCheckQuery.Email="furkan";
-            loginCheckQuery.Password="emre";
-            await _abstractPublisher.BasicPublish(loginCheckQuery,"test");
+            RegisterUserNotifyModel registerUserNotifyModel = new(type: "email", routingKey: "test")
+            {
+                MailBody = "mail bodyy",
+                MailTo="buraya gidecek",
+                Subject="konusu farklı"
+            };
+            _abstractPublisher.BasicPublish(registerUserNotifyModel);
             return Ok();
         }
 
         [HttpGet]
         [Route("login-check")]
-        public async Task<IActionResult> LoginCheck(string email,string password)
+        public async Task<IActionResult> LoginCheck(string email, string password)
         {
             LoginCheckQuery loginCheckQuery = new LoginCheckQuery()
             {
-                 Email=email,
-                 Password=password
+                Email=email,
+                Password=password
             };
             EntityResponse<LoginCheckResponse> loginCheckResponse = await base.Mediator.Send(loginCheckQuery);
             return Ok(loginCheckResponse);
