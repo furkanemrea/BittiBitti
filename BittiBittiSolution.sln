@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BittiBitti.Persistence", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Publisher", "BittiBitti.Publisher\BittiBitti.Publisher.csproj", "{B84A2836-2B1E-4660-B07B-A97D2D09E29C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BittiBitti.Consumer", "BittiBitti.Consumer\BittiBitti.Consumer.csproj", "{1B050BDA-9350-4CDE-A8B4-A01CB907DB6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B84A2836-2B1E-4660-B07B-A97D2D09E29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84A2836-2B1E-4660-B07B-A97D2D09E29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84A2836-2B1E-4660-B07B-A97D2D09E29C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B050BDA-9350-4CDE-A8B4-A01CB907DB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B050BDA-9350-4CDE-A8B4-A01CB907DB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B050BDA-9350-4CDE-A8B4-A01CB907DB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B050BDA-9350-4CDE-A8B4-A01CB907DB6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,13 @@ namespace BittiBitti.Publisher.RabbitMq.Services
     {
         public async Task BasicPublish<T>(T obj, string routingKey)
         {
-            ConnectionFactory factory = new ConnectionFactory() { HostName="localhost", UserName="furkan", Password="furkan123" };
+            
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.UserName = "furkan";
+            factory.Password = "furkan123";
+            factory.VirtualHost = "/";
+            factory.HostName = "89.252.184.189";    
+            factory.Port = AmqpTcpEndpoint.UseDefaultPort;
             using (var connection = factory.CreateConnection())
             using (IModel channel = connection.CreateModel())
             {
@@ -29,9 +35,9 @@ namespace BittiBitti.Publisher.RabbitMq.Services
 
                 channel.BasicPublish(
                     exchange: "",
-                    routingKey: routingKey,
-                    body: body
-                );
+                                routingKey: routingKey,
+                                body: body
+                            );
             }
         }
     }

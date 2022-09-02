@@ -4,6 +4,9 @@ using BittiBitti.Core.CustomHandlers.Exceptions.Middleware;
 using BittiBitti.Persistence;
 using BittiBitti.Persistence.Contexts;
 using BittiBitti.Persistence.Repositories;
+using BittiBitti.Publisher;
+using BittiBitti.Publisher.RabbitMq.Services;
+using BittiBitti.Publisher.Signatures;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +41,7 @@ namespace BittiBitti.API
 
             services.AddPersistenceServices(Configuration);
             services.AddApplicationServices();
-
+            services.AddPublisherServices();
             services.AddControllers();
             services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder =>
             {

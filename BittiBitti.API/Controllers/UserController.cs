@@ -7,6 +7,7 @@ using BittiBitti.Core.Persistence.Paging;
 using BittiBitti.Domain.Entities;
 using BittiBitti.Persistence.Contexts;
 using BittiBitti.Persistence.Repositories;
+using BittiBitti.Publisher.Signatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,26 @@ namespace BittiBitti.API.Controllers
 
     public class UserController : BaseController
     {
+
+        private readonly IAbstractPublisher _abstractPublisher;
+
+        public UserController(IAbstractPublisher abstractPublisher)
+        {
+       
+
+            _abstractPublisher=abstractPublisher;
+        }
+
+        [HttpGet]
+        [Route("test")]
+        public async Task<IActionResult> Test()
+        {
+            LoginCheckQuery loginCheckQuery = new LoginCheckQuery();
+            loginCheckQuery.Email="furkan";
+            loginCheckQuery.Password="emre";
+            await _abstractPublisher.BasicPublish(loginCheckQuery,"test");
+            return Ok();
+        }
 
         [HttpGet]
         [Route("login-check")]

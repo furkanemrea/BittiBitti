@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BittiBitti.Core\BittiBitti.Core.csproj" />
     <ProjectReference Include="..\BittiBitti.Persistence\BittiBitti.Persistence.csproj" />
+    <ProjectReference Include="..\BittiBitti.Publisher\BittiBitti.Publisher.csproj" />
   </ItemGroup>
 
 </Project>

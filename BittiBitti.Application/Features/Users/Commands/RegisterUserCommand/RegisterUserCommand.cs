@@ -21,6 +21,7 @@ namespace BittiBitti.Application.Features.Users.Commands.RegisterUserCommand
         public string Name { get; set; }
         public string Surname { get; set; }
 
+
         public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, EntityResponse<CreateUserResponse>>
         {
             private readonly IUserRepository _userRepository;
