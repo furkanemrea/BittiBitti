@@ -23,6 +23,7 @@ namespace BittiBitti.Persistence
                                                       options.UseNpgsql("Server=89.252.184.189;Port=5432;Database=BittiBitti;User Id=bittibitti;Password=159357;"));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IBrandRepository, BrandRepository>();
             return services;
         }
     }

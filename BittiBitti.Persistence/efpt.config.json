@@ -20,6 +20,10 @@
       {
          "Name": "public.User",
          "ObjectType": 0
+      },
+      {
+         "Name": "public.Brand",
+         "ObjectType": 0
       }
    ],
    "UiHint": "BittiBitti",
