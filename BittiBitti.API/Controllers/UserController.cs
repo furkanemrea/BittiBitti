@@ -35,13 +35,7 @@ namespace BittiBitti.API.Controllers
         [Route("test")]
         public async Task<IActionResult> Test()
         {
-            RegisterUserNotifyModel registerUserNotifyModel = new(type: "email", routingKey: "test")
-            {
-                MailBody = "mail bodyy",
-                MailTo="buraya gidecek",
-                Subject="konusu farklı"
-            };
-            _abstractPublisher.BasicPublish(registerUserNotifyModel);
+  
             return Ok();
         }
 
@@ -62,6 +56,16 @@ namespace BittiBitti.API.Controllers
         public async Task<IActionResult> Register(RegisterUserCommand registerUserCommand)
         {
             EntityResponse<CreateUserResponse> createUserResponse = await base.Mediator.Send(registerUserCommand);
+            if (createUserResponse.Code == ResponseCodes.Success)
+            {
+                RegisterUserNotifyModel registerUserNotifyModel = new(type: "email", routingKey: "test")
+                {
+                    MailBody = $"Welcome {registerUserCommand.Name}",
+                    MailTo=registerUserCommand.Email,
+                    Subject=$"Welcome To BittiBitti"
+                };
+                _abstractPublisher.BasicPublish(registerUserNotifyModel);
+            }
             return Ok(createUserResponse);
         }
 

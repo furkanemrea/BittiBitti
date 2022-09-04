@@ -4,6 +4,7 @@ using BittiBitti.Application.Features.Users.Rules;
 using BittiBitti.Application.Services.Repositories;
 using BittiBitti.Core.Models.Base;
 using BittiBitti.Domain.Entities;
+using BittiBitti.Publisher.Signatures;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace BittiBitti.Application.Features.Users.Commands.RegisterUserCommand
             private readonly IMapper _mapper;
             private readonly UserBusinessRules _userBusinessRules;
 
-            public RegisterUserCommandHandler(IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules)
+            public RegisterUserCommandHandler(IAbstractPublisher abstractPublisher,IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules)
             {
                 _userRepository=userRepository;
                 _mapper=mapper;

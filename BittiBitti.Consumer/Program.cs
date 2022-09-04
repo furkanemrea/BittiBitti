@@ -30,7 +30,6 @@ namespace BittiBitti.Consumer
                 {
                     byte[] body = ea.Body.ToArray();
                     string message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(message);
                     NotifyModel notifyModel = JsonConvert.DeserializeObject<NotifyModel>(message);
                     IConsumerHandler consumerHandler = readerStrategy.GetHandler(notifyModel.Type);
                     consumerHandler.Handle(message);

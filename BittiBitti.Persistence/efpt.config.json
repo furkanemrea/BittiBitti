@@ -14,6 +14,10 @@
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
+         "Name": "public.Category",
+         "ObjectType": 0
+      },
+      {
          "Name": "public.User",
          "ObjectType": 0
       }

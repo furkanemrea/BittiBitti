@@ -22,6 +22,7 @@ namespace BittiBitti.Persistence
             services.AddDbContext<PostgreDbContext>(options =>
                                                       options.UseNpgsql("Server=89.252.184.189;Port=5432;Database=BittiBitti;User Id=bittibitti;Password=159357;"));
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             return services;
         }
     }

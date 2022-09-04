@@ -22,14 +22,15 @@ namespace BittiBitti.Consumer.Handlers
             mesaj.Body = notifyModel.MailBody;
 
             SmtpClient a = new SmtpClient();
-            a.Credentials = new System.Net.NetworkCredential("furkanemrealtintas@gmail.com", "pass"); // will get from Appsetting.json by type
+            a.Credentials = new System.Net.NetworkCredential("furkanemrealtintas@gmail.com", "159357FEA"); // will get from Appsetting.json by type
             a.Port = 587;
-            a.Host = "furkanemrealtintas@gmail.com"; // will get from Appsetting.json by type
+            a.UseDefaultCredentials=false;
+            a.Host = "smtp.gmail.com"; // will get from Appsetting.json by type
             a.EnableSsl = true;
             object userState = message;
             try
             {
-                a.SendAsync(mesaj, (object)message);
+                a.Send(mesaj);
             }
 
             catch (SmtpException ex)

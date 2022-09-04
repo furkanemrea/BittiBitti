@@ -15,9 +15,13 @@
   <ItemGroup>
     <ProjectReference Include="..\BittiBitti.Core\BittiBitti.Core.csproj" />
     <ProjectReference Include="..\BittiBitti.Domain\BittiBitti.Domain.csproj" />
+    <ProjectReference Include="..\BittiBitti.Publisher\BittiBitti.Publisher.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Categories\Commands\" />
+    <Folder Include="Features\Categories\Dtos\Request\" />
+    <Folder Include="Features\Categories\Rules\" />
     <Folder Include="Features\Users\Commands\LoginCheckCommand\" />
     <Folder Include="Features\Users\Dtos\Request\" />
   </ItemGroup>

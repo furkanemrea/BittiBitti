@@ -15,11 +15,25 @@ namespace BittiBitti.Persistence.Contexts
 
         }
 
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "en_US.utf8");
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.Description).HasMaxLength(50);
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.Name).HasMaxLength(50);
+            });
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -42,6 +56,5 @@ namespace BittiBitti.Persistence.Contexts
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
     }
 }
