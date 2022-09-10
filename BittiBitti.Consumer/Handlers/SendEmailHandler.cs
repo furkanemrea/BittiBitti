@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,30 +12,31 @@ namespace BittiBitti.Consumer.Handlers
 {
     public class SendEmailHandler : IConsumerHandler
     {
-        public void Handle(string message)
+        public void Handle(string notifyModelContent)
         {
-            RegisterUserNotifyModel notifyModel = JsonConvert.DeserializeObject<RegisterUserNotifyModel>(message);
 
-            MailMessage mesaj = new MailMessage();
-            mesaj.From = new MailAddress("**"); // will get from Appsetting.json by type
-            mesaj.To.Add(notifyModel.MailTo);
-            mesaj.Subject = notifyModel.Subject;
-            mesaj.Body = notifyModel.MailBody;
 
-            SmtpClient a = new SmtpClient();
-            a.Credentials = new System.Net.NetworkCredential("***", "***"); // will get from Appsetting.json by type
-            a.Port = 587;
-            a.UseDefaultCredentials=false;
-            a.Host = "smtp.gmail.com"; // will get from Appsetting.json by type
-            a.EnableSsl = true;
-            object userState = message;
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            message.From = new MailAddress("kod.yazilimm@gmail.com");
+            message.To.Add(new MailAddress("furkanemrealtintas@gmail.com"));
+            message.Subject = "Test";
+            message.IsBodyHtml = true; //to make message body as html  
+            message.Body = "<h1>Merhaba</h1>";
+            smtp.Port = 587;
+            smtp.Host = "smtp.google.com"; //for gmail host  
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = new System.Net.NetworkCredential("kod.yazilimm@gmail.com", "159357FEA"); // will get from Appsetting.json by type
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             try
             {
-                a.Send(mesaj);
-            }
+                smtp.Send("kod.yazilimm@gmail.com", "furkanemrealtintas@gmail.com", "Hello world", "testbody");
 
+                //cki.Send(message);
+            }
             catch (SmtpException ex)
-            {
+                {
 
             }
         }

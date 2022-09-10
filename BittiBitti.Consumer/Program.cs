@@ -1,4 +1,5 @@
-﻿using BittiBitti.Consumer.Handlers;
+﻿using BittiBitti.Application.Features.Users.Commands.RegisterUserCommand;
+using BittiBitti.Consumer.Handlers;
 using BittiBitti.Core.Models.MessageBrokers;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -37,9 +38,6 @@ namespace BittiBitti.Consumer
                 channel.BasicConsume(queue: "test", autoAck: true, consumer: consumer);
                 Console.ReadLine();
             }
-
-
-
         }
     }
 }

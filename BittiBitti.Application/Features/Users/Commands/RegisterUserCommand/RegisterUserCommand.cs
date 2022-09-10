@@ -28,15 +28,24 @@ namespace BittiBitti.Application.Features.Users.Commands.RegisterUserCommand
             private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
             private readonly UserBusinessRules _userBusinessRules;
+            private readonly IAbstractPublisher _abstractPublisher;
 
             public RegisterUserCommandHandler(IAbstractPublisher abstractPublisher,IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules)
             {
                 _userRepository=userRepository;
                 _mapper=mapper;
                 _userBusinessRules=userBusinessRules;
+                _abstractPublisher = abstractPublisher;
             }
             async Task<EntityResponse<CreateUserResponse>> IRequestHandler<RegisterUserCommand, EntityResponse<CreateUserResponse>>.Handle(RegisterUserCommand request, CancellationToken cancellationToken)
             {
+
+                RegisterUserNotifyModel abc = new("email","test");
+                abc.MailBody="asdasd";
+                abc.MailTo="asdasd";
+                _abstractPublisher.BasicPublish(abc);
+
+
                 EntityResponse<CreateUserResponse> responseModel = new();
                 User mappedUser = _mapper.Map<User>(request);
                 await _userBusinessRules.UserEmailCannotBeDuplicatedWhenInserted(mappedUser.Email);
