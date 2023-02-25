@@ -27,11 +27,11 @@ namespace BittiBitti.Consumer.Handlers
             smtp.Host = "smtp.google.com"; //for gmail host  
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = true;
-            smtp.Credentials = new System.Net.NetworkCredential("kod.yazilimm@gmail.com", "159357FEA"); // will get from Appsetting.json by type
+            smtp.Credentials = new System.Net.NetworkCredential("*********", "********"); // will get from Appsetting.json by type
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             try
             {
-                smtp.Send("kod.yazilimm@gmail.com", "furkanemrealtintas@gmail.com", "Hello world", "testbody");
+                smtp.Send("*******", "******", "Hello world", "testbody");
 
                 //cki.Send(message);
             }
